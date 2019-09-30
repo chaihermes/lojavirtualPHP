@@ -1,5 +1,5 @@
 <?php
-    $nomeSistema = "Cursos CH";
+    $nomeSistema = "Cervejas Artesanais";
 ?>
 
 <!DOCTYPE html>
@@ -12,19 +12,71 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="d-flex justify-content-between align-items-center p-3">
+    <header class="navbar">
         <h1 id="logo">
             <?php echo $nomeSistema; ?>
         </h1>
         <nav>
             <ul class="nav">
-                <li class="nav-item">Cursos</li>
-                <li class="nav-item">Login</li>
-                <li class="nav-item">Cadastrar</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cervejas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cadastrar</a>
+                </li>
             </ul>
         </nav>
-    
     </header>
+    <main>
+        <section class="container mt-4">
+            <div class="row justify-content-around">
+                <div class="col-lg-3 card text-center">
+                    <h2>IPA</h2>
+                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <div class="card-body">
+                        <h5 class="card-title">IPA</h5>
+                        <p class="card-text">R$15,00</p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>      
+
+                <div class="col-lg-3 card text-center">
+                    <h2>Weiss</h2>
+                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <div class="card-body">
+                        <h5 class="card-title">Weiss</h5>
+                        <p class="card-text">R$15,00</p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 card text-center">
+                    <h2>Red</h2>
+                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <div class="card-body">
+                        <h5 class="card-title">Red</h5>
+                        <p class="card-text">R$15,00</p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+
+
+
+            </div>   
+        </section>
+
+    </main>
+
+
+
+
+
+
+
+
     <!-- <?php
         $nome = "Chaiana";
         $idade = 33;
