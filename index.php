@@ -1,5 +1,6 @@
 <?php
     $nomeSistema = "Cervejas Artesanais";
+    $usuario = ["nome"=>"Chaiana"];
 ?>
 
 <!DOCTYPE html>
@@ -18,15 +19,21 @@
         </h1>
         <nav>
             <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cervejas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastrar</a>
-                </li>
+                <?php if(isset($usuario) && $usuario != []) {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cervejas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Olá, <?php echo $usuario["nome"]; ?></a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cadastrar</a>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
     </header>
@@ -35,7 +42,7 @@
             <div class="row justify-content-around">
                 <div class="col-lg-3 card text-center">
                     <h2>IPA</h2>
-                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <img src="images/ipa.jpg" class="card-img-top" alt="imagemCursoFullStack">
                     <div class="card-body">
                         <h5 class="card-title">IPA</h5>
                         <p class="card-text">R$15,00</p>
@@ -45,7 +52,7 @@
 
                 <div class="col-lg-3 card text-center">
                     <h2>Weiss</h2>
-                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <img src="images/weiss.jpg" class="card-img-top" alt="imagemCursoFullStack">
                     <div class="card-body">
                         <h5 class="card-title">Weiss</h5>
                         <p class="card-text">R$15,00</p>
@@ -55,7 +62,7 @@
 
                 <div class="col-lg-3 card text-center">
                     <h2>Red</h2>
-                    <img src="images/image1.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                    <img src="images/red.jpg" class="card-img-top" alt="imagemCursoFullStack">
                     <div class="card-body">
                         <h5 class="card-title">Red</h5>
                         <p class="card-text">R$15,00</p>
