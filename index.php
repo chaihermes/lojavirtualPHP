@@ -1,6 +1,14 @@
 <?php
     $nomeSistema = "Cervejas Artesanais";
     $usuario = ["nome"=>"Chaiana"];
+
+    $produtos = [
+        ["nome"=>"Cerveja IPA", "preco"=> "17,00", "ml"=>500],
+        ["nome"=>"Cerveja Weiss", "preco"=> "18,00", "ml"=>500],
+        ["nome"=>"Cerveja Red Ale", "preco"=> "20,00", "ml"=>600], /*aqui tem que ser , não ; */
+    ];
+
+    $categorias = ["Cervejas Claras", "Cervejas Escuras"];
 ?>
 
 <!DOCTYPE html>
@@ -37,20 +45,44 @@
             </ul>
         </nav>
     </header>
+
+
+
     <main>
+<!--sub menu -->
+        <div class="navbar bg-dark row justify-content-around"> 
+            <ul class="nav justify-content-between">
+                    <?php if(isset($categorias) && $categorias != []) { ?>
+                        <?php foreach($categorias as $categoria) {?>
+                        <li class="nav-item"><a class="nav-link text-white" href="#"><?php echo $categoria; ?></a>
+                        </li>
+                        <?php } ?>
+                    <?php } ?>
+            </ul>
+        </div>
+<!--sub menu -->
+
+
         <section class="container mt-4">
             <div class="row justify-content-around">
-                <div class="col-lg-3 card text-center">
-                    <h2>IPA</h2>
-                    <img src="images/ipa.jpg" class="card-img-top" alt="imagemCursoFullStack">
-                    <div class="card-body">
-                        <h5 class="card-title">IPA</h5>
-                        <p class="card-text">R$15,00</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
-                    </div>
-                </div>      
+            <?php if(isset($produtos) && $produtos != []) { ?>
+                <?php foreach($produtos as $produto) { ?>        
+                    <div class="col-lg-3 card text-center">
+                        <h2><?php echo $produto["nome"]; ?></h2>
+                        <img src="images/ipa.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                        <div class="card-body">
+                            <p class="card-text"><?php echo $produto["preco"]; ?></p>
+                            <a href="#" class="btn btn-primary">Comprar</a>
+                        </div>
+                    </div>  
+                <?php } ?>    <!-- encerra php do foreach -->
+            <?php } else { ?>   <!-- encerra php do if -->
+                <h1>Não tem produtos cadastrados nessa sessão</h1> <!-- feedback pro usuário -->
+            <?php } ?> <!-- encerra o php do else -->
 
-                <div class="col-lg-3 card text-center">
+
+
+                <!-- <div class="col-lg-3 card text-center">
                     <h2>Weiss</h2>
                     <img src="images/weiss.jpg" class="card-img-top" alt="imagemCursoFullStack">
                     <div class="card-body">
@@ -64,11 +96,11 @@
                     <h2>Red</h2>
                     <img src="images/red.jpg" class="card-img-top" alt="imagemCursoFullStack">
                     <div class="card-body">
-                        <h5 class="card-title">Red</h5>
+                        <h5 class="card-title">Red Ale</h5>
                         <p class="card-text">R$15,00</p>
                         <a href="#" class="btn btn-primary">Comprar</a>
                     </div>
-                </div>
+                </div> -->
 
 
 
