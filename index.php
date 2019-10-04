@@ -3,9 +3,9 @@
     $usuario = ["nome"=>"Chaiana"];
 
     $produtos = [
-        ["nome"=>"Cerveja IPA", "preco"=> "17,00", "ml"=>500],
-        ["nome"=>"Cerveja Weiss", "preco"=> "18,00", "ml"=>500],
-        ["nome"=>"Cerveja Red Ale", "preco"=> "20,00", "ml"=>600], /*aqui tem que ser , não ; */
+        ["nome"=>"Cerveja IPA", "preco"=> "17,00", "ml"=>500, "img"=>"images/ipa.jpg"],
+        ["nome"=>"Cerveja Weiss", "preco"=> "18,00", "ml"=>500, "img"=>"images/weiss.jpg"],
+        ["nome"=>"Cerveja Red Ale", "preco"=> "20,00", "ml"=>600, "img"=>"images/red.jpg"], /*aqui tem que ser , não ; */
     ];
 
     $categorias = ["Cervejas Claras", "Cervejas Escuras"];
@@ -60,7 +60,7 @@
                     <?php } ?>
             </ul>
         </div>
-<!--sub menu -->
+<!-- sub menu -->
 
 
         <section class="container mt-4">
@@ -69,10 +69,10 @@
                 <?php foreach($produtos as $produto) { ?>        
                     <div class="col-lg-3 card text-center">
                         <h2><?php echo $produto["nome"]; ?></h2>
-                        <img src="images/ipa.jpg" class="card-img-top" alt="imagemCursoFullStack">
+                        <img src="<?php echo $produto["img"]; ?>" class="card-img-top" alt="imagemsCervejasArtesanais">
                         <div class="card-body">
                             <p class="card-text"><?php echo $produto["preco"]; ?></p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
+                            <a href="carrinho.php?nomeProduto=<?php echo $produto["nome"];?>" class="btn btn-primary">Comprar</a>
                         </div>
                     </div>  
                 <?php } ?>    <!-- encerra php do foreach -->
