@@ -4,18 +4,71 @@ function cadastarProduto($nomeProduto, $descProduto, $imgProduto, $precoProduto)
     $nomeArquivo = "produto.json";
 
     if(file_exists($nomeArquivo)){
+        //abrindo e pegando informações do arquivo json
+        $arquivo = file_get_contents($nomeArquivo);
+        //transformar o arquivo json em array
+        $produtos = json_decode($arquivo, true); //coloca o true para confirmar que quer transformar em array
+        //adicionando um novo produto na array quee stava dentro do aruivo:
+        $produtos[] = ["nome" => $nomeProduto, "preco" => $precoProduto, "desc" => $descProduto, "img" => $imgProduto];
+
+        $json = json_encode($produtos);
+        //salvando o json dentro de um arquivo
+        $deuCerto = file_put_contents($nomeArquivo, $json);
+        //retorno para o usuário
+        if($deuCerto){
+            return "Produto cadastrado com sucesso!";
+        } else {
+            return "Não foi possível cadastrar o produto.";
+        }
+
+        //var_dump($produtos); //a resposta dada é um objeto: array(1) { [0]=> object(stdClass)#1 (4) { ["nome"]=> string(9) "Produto 1" ["preco"]=> string(2) "17" ["desc"]=> string(12) "Cerveja Sour" ["img"]=> string(0) "" } }
+        
+        //depois do true, agora é um array: array(1) { [0]=> array(4) { ["nome"]=> string(9) "Produto 1" ["preco"]=> string(2) "17" ["desc"]=> string(12) "Cerveja Sour" ["img"]=> string(0) "" } }
+
+
+
+
+
+
 
     } else {
         $produtos = [];
-        //array_push() dá o mesmo resultado que a variável $produtos.
+        //array_push() dá o mesmo resultado que a variável $produtos. Porém dessa maneira, é mais custoso para o PHP, $produtos = ..... é mais rápido para rodar.
         $produtos[] = ["nome" => $nomeProduto, "preco" => $precoProduto, "desc" => $descProduto, "img" => $imgProduto];
-        var_dump($produtos);
+        // var_dump($produtos);
+        //transformando array em json
+        $json = json_encode($produtos);
+        //quando cadastra um novo produto no site e dá um var_dump aparece: string(66) "[{"nome":"Produto 1","preco":"14","desc":"Cerveja Sour","img":""}]" -> um json
+        //var_dump($json);
+        //salvando o json dentro de um arquivo
+        $deuCerto = file_put_contents($nomeArquivo, $json); //a função file_put_content pode retornar um bool e pode retornar pro usuário o produto cadastrado com sucesso, mesmo dando algum erro na função
+
+        if($deuCerto){
+            return "Produto cadastrado com sucesso!";
+        } else {
+            return "Não foi possível cadastrar o produto.";
+        }
+        
     }
 
 }
 
+//teste pra ver se a variável $_POST não está vazia e o código vai rodar certo. Valida o POST. Quando tem informações ele retorna array(1) { [0]=> array(4) { ["nome"]=> string(9) "Produto 1" ["preco"]=> string(2) "15" ["desc"]=> string(12) "Cerveja Sour" ["img"]=> string(0) "" } }
+// esse if que guarda as informações do formulário.
 if($_POST){
-    cadastarProduto($_POST['nomeProduto'], $_POST['descProduto'], $_POST['imgProduto'], $_POST['precoProduto']);
+  
+    // var_dump($_FILES);
+    // exit;
+
+    //salvando arquivo
+    $nomeImg = $_FILES['imgProduto']['name'];
+    $localTmp = $_FILES['imgProduto']['tmp_name'];
+    $caminhoSalvo = 'images/'.$nomeImg;
+
+    $deuCerto = move_uploaded_file($localTmp, $caminhoSalvo);
+    exit;
+
+    echo cadastarProduto($_POST['nomeProduto'], $_POST['descProduto'], $caminhoSalvo, $_POST['precoProduto']);
 }
 ?>
 
@@ -42,7 +95,7 @@ if($_POST){
                 <h1> Cadastro de Produto </h1>
             </div>
             <div class="col-12">
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" name="nomeProduto" placeholder="Nome do Produto"/>
                     </div>
