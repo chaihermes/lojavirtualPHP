@@ -25,12 +25,6 @@ function cadastarProduto($nomeProduto, $descProduto, $imgProduto, $precoProduto)
         
         //depois do true, agora é um array: array(1) { [0]=> array(4) { ["nome"]=> string(9) "Produto 1" ["preco"]=> string(2) "17" ["desc"]=> string(12) "Cerveja Sour" ["img"]=> string(0) "" } }
 
-
-
-
-
-
-
     } else {
         $produtos = [];
         //array_push() dá o mesmo resultado que a variável $produtos. Porém dessa maneira, é mais custoso para o PHP, $produtos = ..... é mais rápido para rodar.
@@ -57,24 +51,22 @@ function cadastarProduto($nomeProduto, $descProduto, $imgProduto, $precoProduto)
 // esse if que guarda as informações do formulário.
 if($_POST){
   
-    // var_dump($_FILES);
+    // var_dump($_FILES); visualiza o que tem dentro do FILES.
     // exit;
 
     //salvando arquivo
     $nomeImg = $_FILES['imgProduto']['name'];
     $localTmp = $_FILES['imgProduto']['tmp_name'];
-    $caminhoSalvo = 'images/'.$nomeImg;
+    $dataAtual = date("d-m-y");
+    $caminhoSalvo = $dataAtual.$nomeImg; // é possível acrescentar data e horário para não haver o risco de ter dois arquivos com o mesmo nome e um substituir o outro, sem querer.
 
     $deuCerto = move_uploaded_file($localTmp, $caminhoSalvo);
-    exit;
+    //exit;
 
     echo cadastarProduto($_POST['nomeProduto'], $_POST['descProduto'], $caminhoSalvo, $_POST['precoProduto']);
 }
+//$caminhoSalvo agora as imagens ficam linkadas diretamente por esse link.
 ?>
-
-
-
-
 
 
 

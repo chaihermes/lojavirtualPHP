@@ -1,4 +1,3 @@
-<?php include_once("config/variaveis.php")?>
 
 <!DOCTYPE html>
 <html lang="en">
