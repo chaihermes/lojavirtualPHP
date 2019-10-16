@@ -58,12 +58,12 @@ if($_POST){
     $nomeImg = $_FILES['imgProduto']['name'];
     $localTmp = $_FILES['imgProduto']['tmp_name'];
     $dataAtual = date("d-m-y");
-    $caminhoSalvo = $dataAtual.$nomeImg; // é possível acrescentar data e horário para não haver o risco de ter dois arquivos com o mesmo nome e um substituir o outro, sem querer.
-
+    $caminhoSalvo = 'images/'.$dataAtual.$nomeImg; // é possível acrescentar data e horário para não haver o risco de ter dois arquivos com o mesmo nome e um substituir o outro, sem querer.
+    $linkImg = $dataAtual.$nomeImg;
     $deuCerto = move_uploaded_file($localTmp, $caminhoSalvo);
     //exit;
 
-    echo cadastarProduto($_POST['nomeProduto'], $_POST['descProduto'], $caminhoSalvo, $_POST['precoProduto']);
+    echo cadastarProduto($_POST['nomeProduto'], $_POST['descProduto'], $linkImg, $_POST['precoProduto']);
 }
 //$caminhoSalvo agora as imagens ficam linkadas diretamente por esse link.
 ?>
@@ -76,7 +76,7 @@ if($_POST){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <title>Cadastro Produto</title>
 </head>
 <body>

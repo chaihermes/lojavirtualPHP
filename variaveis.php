@@ -1,6 +1,10 @@
 <?php
+
+session_start(); //avisa o sistema que a sessão vai começar.Todos arquivos que precisa usar session, tem que dar o session_start antes pra ele poder rodar.
+
     $nomeSistema = "Cervejas Artesanais";
-    $usuario = ["nome"=>"Chaiana"];
+    //$usuario = ["nome"=>"Chaiana"];
+    $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : [];    //se existir a sessão usuário, eu vou atribuir o resultado para dentro da variável. Entre o $_SESSION e o [] não pode ter espaço, se tiver dá erro.
 
     $nomeArquivo = "produto.json";
 
