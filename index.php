@@ -10,9 +10,7 @@
 </head>
 <body>
     
-    <?php 
-        include_once("header.php")
-    ?>
+    <?php include_once("header.php")?>
 
     <main>
         <section class="container mt-4">

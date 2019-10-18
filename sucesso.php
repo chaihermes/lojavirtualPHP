@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php include_once("header.php");
-          include_once("config/validacoes.php");        
+          include_once("config/validacoes.php");        //aqui verificar se precisa manter os dois
             
     $nomeUsuario = $_POST['nomeCompleto'];
     validaNome($nomeUsuario);

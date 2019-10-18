@@ -6,10 +6,11 @@ session_start(); //avisa o sistema que a sessão vai começar.Todos arquivos que
     //$usuario = ["nome"=>"Chaiana"];
     $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : [];    //se existir a sessão usuário, eu vou atribuir o resultado para dentro da variável. Entre o $_SESSION e o [] não pode ter espaço, se tiver dá erro.
 
-    $nomeArquivo = "produto.json";
+    $nomeArquivo = __DIR__."/../produto.json"; //DIR mostra o caminho onde está armazenado o arquivo // as barras servem pra sair da pasta
 
     $produtos = json_decode(file_get_contents($nomeArquivo), true);
 
+    //echo $nomeArquivo;
 
 
     // $produtos = [
